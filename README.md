@@ -1,9 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-
 From [manual](https://github.com/storybooks/storybook/blob/master/MIGRATION.md#create-react-app)
 
 > create-react-app@2 should be compatible as is, since it uses babel 7.
+
+### Attempt 1
 
 ```
 npx storybook
@@ -29,16 +30,16 @@ ERR!   code: 'MODULE_NOT_FOUND' }
 ✨  Done in 2.96s.
 ```
 
-### Attempt 2
+Broken :(
 
 ```
 yarn add babel-loader@8
 yarn storybook
 ```
 
-Works!
+Works :)
 
-### Attempt 3
+### Attempt 2
 
 Add dynamic import `import("./locales/en.js");`
 
@@ -49,3 +50,20 @@ ERROR in ./src/App.js
 Module build failed (from ./node_modules/babel-loader/lib/index.js):
 SyntaxError: /Users/slavik/my/react-storybook-test/src/App.js: Support for the experimental syntax 'dynamicImport' isn't currently enabled (5:1):
 ```
+
+Broken :(
+
+```
+yarn add @babel/plugin-syntax-dynamic-import
+```
+
+Add `.storybook/.babelrc`
+
+```json
+{
+  "presets": ["@babel/preset-env", "@babel/preset-react"],
+  "plugins": ["@babel/plugin-syntax-dynamic-import"]
+}
+```
+
+Works :)
