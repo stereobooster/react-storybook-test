@@ -3,8 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "babel-loader": "8",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-scripts": "2.1.1"
@@ -27,6 +25,9 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@babel/core": "^7.0.0-0",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "babel-loader": "8",
     "@storybook/addon-actions": "^4.0.12",
     "@storybook/addon-links": "^4.0.12",
     "@storybook/react": "^4.0.12"

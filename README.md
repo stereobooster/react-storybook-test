@@ -33,7 +33,8 @@ ERR!   code: 'MODULE_NOT_FOUND' }
 Broken :(
 
 ```
-yarn add babel-loader@8
+yarn --dev add babel-loader@8
+yarn --dev add @babel/core@^7.0.0-0
 yarn storybook
 ```
 
@@ -54,7 +55,7 @@ SyntaxError: /Users/slavik/my/react-storybook-test/src/App.js: Support for the e
 Broken :(
 
 ```
-yarn add @babel/plugin-syntax-dynamic-import
+yarn --dev add @babel/plugin-syntax-dynamic-import
 ```
 
 Add `.storybook/.babelrc`
