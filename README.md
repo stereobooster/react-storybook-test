@@ -6,7 +6,7 @@ From [manual](https://github.com/storybooks/storybook/blob/master/MIGRATION.md#c
 
 ### Attempt 1
 
-```
+```shell
 npx storybook
 yarn storybook
 
@@ -32,9 +32,8 @@ ERR!   code: 'MODULE_NOT_FOUND' }
 
 Broken :(
 
-```
-yarn --dev add babel-loader@8
-yarn --dev add @babel/core@^7.0.0-0
+```shell
+yarn --dev add babel-loader@8 @babel/core@^7.0.0-0
 yarn storybook
 ```
 
@@ -44,17 +43,17 @@ Works :)
 
 Add dynamic import `import("./locales/en.js");`
 
-```
+```shell
 yarn storybook
 
 ERROR in ./src/App.js
 Module build failed (from ./node_modules/babel-loader/lib/index.js):
-SyntaxError: /Users/slavik/my/react-storybook-test/src/App.js: Support for the experimental syntax 'dynamicImport' isn't currently enabled (5:1):
+SyntaxError: react-storybook-test/src/App.js: Support for the experimental syntax 'dynamicImport' isn't currently enabled (5:1):
 ```
 
 Broken :(
 
-```
+```shell
 yarn --dev add @babel/plugin-syntax-dynamic-import
 ```
 
@@ -68,3 +67,43 @@ Add `.storybook/.babelrc`
 ```
 
 Works :)
+
+### Attempt 3
+
+add static property
+
+```js
+class App extends Component {
+  test = "";
+}
+```
+
+```shell
+yarn storybook
+
+ERROR in ./src/App.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: react-storybook-test/src/App.js: Support for the experimental syntax 'classProperties' isn't currently enabled (8:8):
+```
+
+Broken :(
+
+```shell
+yarn --dev add @babel/plugin-proposal-class-properties
+```
+
+Add `.storybook/.babelrc`
+
+```json
+{
+  "presets": ["@babel/preset-env", "@babel/preset-react"],
+  "plugins": [
+    "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-proposal-class-properties"
+  ]
+}
+```
+
+Works :)
+
+Full list of [CRA2 babel plugins](https://github.com/facebook/create-react-app/blob/master/packages/babel-preset-react-app/create.js)

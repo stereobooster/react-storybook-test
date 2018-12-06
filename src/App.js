@@ -5,6 +5,7 @@ import "./App.css";
 import("./locales/en.js");
 
 class App extends Component {
+  test = "";
   render() {
     return (
       <div className="App">
