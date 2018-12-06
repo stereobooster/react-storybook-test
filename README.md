@@ -28,3 +28,24 @@ ERR!    'Error: Cannot find module \'babel-loader/package.json\' from \'react-st
 ERR!   code: 'MODULE_NOT_FOUND' }
 ✨  Done in 2.96s.
 ```
+
+### Attempt 2
+
+```
+yarn add babel-loader@8
+yarn storybook
+```
+
+Works!
+
+### Attempt 3
+
+Add dynamic import `import("./locales/en.js");`
+
+```
+yarn storybook
+
+ERROR in ./src/App.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+SyntaxError: /Users/slavik/my/react-storybook-test/src/App.js: Support for the experimental syntax 'dynamicImport' isn't currently enabled (5:1):
+```
